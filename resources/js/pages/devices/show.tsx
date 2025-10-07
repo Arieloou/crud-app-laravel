@@ -1,8 +1,13 @@
 import AppLayout from "@/layouts/app-layout";
 import { route } from "ziggy-js";
 import { Head, Link } from "@inertiajs/react";
+import { Device } from "@/types/global";
 
-export default function Show({ device }: any) {
+interface ShowDeviceProps {
+    device: Device;
+}
+
+export default function Show({ device }: ShowDeviceProps) {
     return (
         <AppLayout>
             <Head title="Inspect Device" />

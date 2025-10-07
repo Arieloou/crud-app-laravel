@@ -1,7 +1,7 @@
 import AppLayout from "@/layouts/app-layout";
-import React, { useState } from "react";
+import React from "react";
 import { route } from "ziggy-js";
-import { Head, Link, useForm } from "@inertiajs/react";
+import { Head, useForm } from "@inertiajs/react";
 import { Category, DeviceModel, AuthProps } from "@/types/global";
 
 interface DeviceCreateProps {

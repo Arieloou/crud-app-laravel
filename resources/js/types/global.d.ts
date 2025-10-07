@@ -66,27 +66,6 @@ interface AuthProps {
     user: AuthUser;
 }
 
-// Definitions for Ziggy (Laravel routes)
-declare module 'ziggy-js' {
-    interface ZiggyConfig {
-        // Define your routes here if you want strict typing
-        // Or use a more permissive type if you don't need each route explicitly typed
-        routes: Record<string, any>;
-    }
-
-    export function route(
-        name: string,
-        params?: Record<string, any>,
-        absolute?: boolean,
-        config?: any
-    ): string;
-}
-
-// Extend the Window object to include Ziggy if needed for global use
-declare interface Window {
-    Ziggy: any;
-}
-
 // Types for the Breeze authentication layout
 interface AuthenticatedLayoutProps {
     user: AuthUser;
