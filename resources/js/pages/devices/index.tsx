@@ -11,6 +11,7 @@ export default function IndexDevice({ devices, success } : { devices: PaginatedD
         }
     };
 
+    
     return (
         <AppLayout>
             <Head title="Devices" />
