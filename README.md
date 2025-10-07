@@ -1,8 +1,25 @@
 # Sistema de Gestión de Dispositivos (CRUD App)
 
 Un sistema web moderno y eficiente para la gestión de inventario de dispositivos tecnológicos, construido con Laravel, React e Inertia.js. Permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) de forma intuitiva y segura.
+<img width="1366" height="655" alt="image" src="https://github.com/user-attachments/assets/be702916-9122-41fe-8d31-ca9b1b6e0e38" />
 
-[Imagen de la aplicación aquí]
+---
+
+## Índice
+
+*[Descripción](#Descripción)
+
+*[Funcionalidades-principales](#Funcionalidades-principales)
+
+*[Acceso al proyecto](#Acceso-proyecto)
+
+*[Estructura del proyecto](#Estructura-del-proyecto)
+
+*[Tecnologías utilizadas](#Tecnologías-utilizadas)
+
+*[Autor](#Autor)
+
+*[Licencia](#Licencia)
 
 ---
 
