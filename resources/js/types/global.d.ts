@@ -1,3 +1,9 @@
+import { route as routeFn } from 'ziggy-js';
+
+declare global {
+    var route: typeof routeFn;
+}
+
 // Defines types for the Laravel models that are passed to Inertia
 interface Category {
     id: number;

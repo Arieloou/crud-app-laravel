@@ -1,7 +1,6 @@
 import AppLayout from "@/layouts/app-layout";
 import { route } from "ziggy-js";
-import { Head, Link, router, useForm } from "@inertiajs/react";
-
+import { Head, Link } from "@inertiajs/react";
 
 export default function Show({ device }: any) {
     return (

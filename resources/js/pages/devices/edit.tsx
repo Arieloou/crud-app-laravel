@@ -1,6 +1,7 @@
 import AppLayout from "@/layouts/app-layout";
 import { route } from "ziggy-js";
 import { Head, useForm } from "@inertiajs/react";
+import { Category, DeviceModel, Device, AuthProps } from "@/types/global";
 
 interface DeviceEditProps {
     auth: AuthProps;

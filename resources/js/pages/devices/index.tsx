@@ -2,6 +2,7 @@ import AppLayout from "@/layouts/app-layout";
 import Pagination from "@/components/pagination";
 import { route }  from "ziggy-js";
 import { Head, Link, router } from "@inertiajs/react";
+import { PaginatedData, Device } from "@/types/global";
 
 export default function IndexDevice({ devices, success } : { devices: PaginatedData<Device>; success? : string }) {
     const handleDelete = (id: number) => {

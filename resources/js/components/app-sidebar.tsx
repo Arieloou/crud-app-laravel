@@ -10,12 +10,12 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import devices  from '@/routes/devices';
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Computer, Folder, LayoutGrid } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, Computer } from 'lucide-react';
 import AppLogo from './app-logo';
-import { index } from '@/actions/App/Http/Controllers/DeviceController';
 
 const mainNavItems: NavItem[] = [
     {
@@ -25,7 +25,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Devices',
-        href: index(),
+        href: devices.index(),
         icon: Computer,
     }
 ];
