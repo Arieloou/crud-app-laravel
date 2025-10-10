@@ -13,11 +13,11 @@ class DeviceController extends Controller
 {
     public function index() : Response
     {
-        $devices = Device::with(['deviceModel', 'category'])->latest()->paginate(10); // Paginación para mejor rendimiento
+        $devices = Device::with(['deviceModel', 'category'])->latest()->paginate(10);
 
         return Inertia::render('devices/index', [
             'devices' => $devices,
-            'success' => session('success'), // Para mensajes flash
+            'success' => session('success'),
         ]);
     }
 
@@ -32,13 +32,13 @@ class DeviceController extends Controller
         ]);
     }
 
-    public function edit(Device $device) : Response
+    public function edit(string $id) : Response
     {
         $categories = Category::all(['id', 'name']);
         $deviceModels = DeviceModel::all(['id', 'name']);
 
         return Inertia::render('devices/edit', [
-            'device' => $device->load(['deviceModel', 'category']),
+            'device' => Device::findOrFail($id)->load(['deviceModel', 'category']),
             'categories' => $categories,
             'deviceModels' => $deviceModels,
         ]);
@@ -67,24 +67,29 @@ class DeviceController extends Controller
         return redirect()->route('devices.index')->with('success', 'Dispositivo creado correctamente');
     }
 
-    public function update(Request $request, Device $device) 
+    public function update(Request $request, string $id) 
     {
         $request->validate([
-            'serial_number' => 'required|string|unique:devices,serial_number,' . $device->id . '|max:255', // Ignora el propio dispositivo al validar unique
+            'serial_number' => 'required|string|unique:devices,serial_number,' . $id . '|max:255',
             'device_model_id' => 'required|exists:device_models,id',
             'category_id' => 'required|exists:categories,id',
             'purchase_date' => 'required|date',
             'state' => 'required|string|max:255',
         ]);
 
+        $device = Device::findOrFail($id);
+
         $device->update($request->all());
 
         return redirect()->route('devices.index')->with('success', 'Dispositivo actualizado correctamente.');
     }
 
-    public function destroy(Device $device)
+    public function destroy(string $id)
     {
+        $device = Device::findOrFail($id);
+
         $device->delete();
+        
         return redirect()->route('devices.index')->with('success', 'Dispositivo eliminado correctamente.');
     }
 }

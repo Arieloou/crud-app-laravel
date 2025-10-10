@@ -16,19 +16,22 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        $this->call([
+            CategorySeeder::class,
+            DeviceModelSeeder::class,
+            DeviceSeeder::class,
+            RoleSeeder::class,
+        ]);
+
+        
         User::firstOrCreate(
             ['email' => 'test@example.com'],
             [
                 'name' => 'Test User',
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
+                'role_id' => 1
             ]
         );
-
-        $this->call([
-            CategorySeeder::class,
-            DeviceModelSeeder::class,
-            DeviceSeeder::class,
-        ]);
     }
 }

@@ -2,10 +2,9 @@ import AppLayout from "@/layouts/app-layout";
 import React from "react";
 import { route } from "ziggy-js";
 import { Head, useForm } from "@inertiajs/react";
-import { Category, DeviceModel, AuthProps } from "@/types/global";
+import { Category, DeviceModel } from "@/types/global";
 
 interface DeviceCreateProps {
-    auth: AuthProps;
     categories: Category[];
     deviceModels: DeviceModel[];
 }

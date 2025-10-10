@@ -52,23 +52,8 @@ interface PaginatedData<T> {
     total: number;
 }
 
-// Interface for the Inertia authentication user object
-interface AuthUser {
-    id: number;
-    name: string;
-    email: string;
-    // Add permissions/roles here if you share them from HandleInertiaRequests
-    can: string[]; // For example, if you pass an array of permission names
-    roles: string[]; // For example, if you pass an array of role names
-}
-
-interface AuthProps {
-    user: AuthUser;
-}
-
 // Types for the Breeze authentication layout
 interface AuthenticatedLayoutProps {
-    user: AuthUser;
     header?: React.ReactNode;
     children: React.ReactNode;
 }

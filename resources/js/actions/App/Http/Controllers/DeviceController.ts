@@ -312,7 +312,7 @@ show.head = (args: { device: string | number } | [device: string | number ] | st
  * @see app/Http/Controllers/DeviceController.php:35
  * @route '/devices/{device}/edit'
  */
-export const edit = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -327,14 +327,11 @@ edit.definition = {
  * @see app/Http/Controllers/DeviceController.php:35
  * @route '/devices/{device}/edit'
  */
-edit.url = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+edit.url = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { device: args }
     }
 
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { device: args.id }
-        }
     
     if (Array.isArray(args)) {
         args = {
@@ -345,9 +342,7 @@ edit.url = (args: { device: number | { id: number } } | [device: number | { id: 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-                        device: typeof args.device === 'object'
-                ? args.device.id
-                : args.device,
+                        device: args.device,
                 }
 
     return edit.definition.url
@@ -360,7 +355,7 @@ edit.url = (args: { device: number | { id: number } } | [device: number | { id: 
  * @see app/Http/Controllers/DeviceController.php:35
  * @route '/devices/{device}/edit'
  */
-edit.get = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -369,7 +364,7 @@ edit.get = (args: { device: number | { id: number } } | [device: number | { id: 
  * @see app/Http/Controllers/DeviceController.php:35
  * @route '/devices/{device}/edit'
  */
-edit.head = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -379,7 +374,7 @@ edit.head = (args: { device: number | { id: number } } | [device: number | { id:
  * @see app/Http/Controllers/DeviceController.php:35
  * @route '/devices/{device}/edit'
  */
-    const editForm = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const editForm = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: edit.url(args, options),
         method: 'get',
     })
@@ -389,7 +384,7 @@ edit.head = (args: { device: number | { id: number } } | [device: number | { id:
  * @see app/Http/Controllers/DeviceController.php:35
  * @route '/devices/{device}/edit'
  */
-        editForm.get = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.get = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, options),
             method: 'get',
         })
@@ -398,7 +393,7 @@ edit.head = (args: { device: number | { id: number } } | [device: number | { id:
  * @see app/Http/Controllers/DeviceController.php:35
  * @route '/devices/{device}/edit'
  */
-        editForm.head = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.head = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -414,7 +409,7 @@ edit.head = (args: { device: number | { id: number } } | [device: number | { id:
  * @see app/Http/Controllers/DeviceController.php:70
  * @route '/devices/{device}'
  */
-export const update = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -429,14 +424,11 @@ update.definition = {
  * @see app/Http/Controllers/DeviceController.php:70
  * @route '/devices/{device}'
  */
-update.url = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { device: args }
     }
 
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { device: args.id }
-        }
     
     if (Array.isArray(args)) {
         args = {
@@ -447,9 +439,7 @@ update.url = (args: { device: number | { id: number } } | [device: number | { id
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-                        device: typeof args.device === 'object'
-                ? args.device.id
-                : args.device,
+                        device: args.device,
                 }
 
     return update.definition.url
@@ -462,7 +452,7 @@ update.url = (args: { device: number | { id: number } } | [device: number | { id
  * @see app/Http/Controllers/DeviceController.php:70
  * @route '/devices/{device}'
  */
-update.put = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -471,7 +461,7 @@ update.put = (args: { device: number | { id: number } } | [device: number | { id
  * @see app/Http/Controllers/DeviceController.php:70
  * @route '/devices/{device}'
  */
-update.patch = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -481,7 +471,7 @@ update.patch = (args: { device: number | { id: number } } | [device: number | { 
  * @see app/Http/Controllers/DeviceController.php:70
  * @route '/devices/{device}'
  */
-    const updateForm = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -496,7 +486,7 @@ update.patch = (args: { device: number | { id: number } } | [device: number | { 
  * @see app/Http/Controllers/DeviceController.php:70
  * @route '/devices/{device}'
  */
-        updateForm.put = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -510,7 +500,7 @@ update.patch = (args: { device: number | { id: number } } | [device: number | { 
  * @see app/Http/Controllers/DeviceController.php:70
  * @route '/devices/{device}'
  */
-        updateForm.patch = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.patch = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PATCH',
@@ -523,10 +513,10 @@ update.patch = (args: { device: number | { id: number } } | [device: number | { 
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\DeviceController::destroy
- * @see app/Http/Controllers/DeviceController.php:85
+ * @see app/Http/Controllers/DeviceController.php:87
  * @route '/devices/{device}'
  */
-export const destroy = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -538,17 +528,14 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\DeviceController::destroy
- * @see app/Http/Controllers/DeviceController.php:85
+ * @see app/Http/Controllers/DeviceController.php:87
  * @route '/devices/{device}'
  */
-destroy.url = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { device: args }
     }
 
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { device: args.id }
-        }
     
     if (Array.isArray(args)) {
         args = {
@@ -559,9 +546,7 @@ destroy.url = (args: { device: number | { id: number } } | [device: number | { i
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-                        device: typeof args.device === 'object'
-                ? args.device.id
-                : args.device,
+                        device: args.device,
                 }
 
     return destroy.definition.url
@@ -571,20 +556,20 @@ destroy.url = (args: { device: number | { id: number } } | [device: number | { i
 
 /**
 * @see \App\Http\Controllers\DeviceController::destroy
- * @see app/Http/Controllers/DeviceController.php:85
+ * @see app/Http/Controllers/DeviceController.php:87
  * @route '/devices/{device}'
  */
-destroy.delete = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
 
     /**
 * @see \App\Http\Controllers\DeviceController::destroy
- * @see app/Http/Controllers/DeviceController.php:85
+ * @see app/Http/Controllers/DeviceController.php:87
  * @route '/devices/{device}'
  */
-    const destroyForm = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroyForm = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroy.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -596,10 +581,10 @@ destroy.delete = (args: { device: number | { id: number } } | [device: number | 
 
             /**
 * @see \App\Http\Controllers\DeviceController::destroy
- * @see app/Http/Controllers/DeviceController.php:85
+ * @see app/Http/Controllers/DeviceController.php:87
  * @route '/devices/{device}'
  */
-        destroyForm.delete = (args: { device: number | { id: number } } | [device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroyForm.delete = (args: { device: string | number } | [device: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroy.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',

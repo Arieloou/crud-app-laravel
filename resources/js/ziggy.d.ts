@@ -60,22 +60,46 @@ declare module 'ziggy-js' {
     "devices.edit": [
         {
             "name": "device",
-            "required": true,
-            "binding": "id"
+            "required": true
         }
     ],
     "devices.update": [
         {
             "name": "device",
-            "required": true,
-            "binding": "id"
+            "required": true
         }
     ],
     "devices.destroy": [
         {
             "name": "device",
-            "required": true,
-            "binding": "id"
+            "required": true
+        }
+    ],
+    "users.index": [],
+    "users.create": [],
+    "users.store": [],
+    "users.show": [
+        {
+            "name": "user",
+            "required": true
+        }
+    ],
+    "users.edit": [
+        {
+            "name": "user",
+            "required": true
+        }
+    ],
+    "users.update": [
+        {
+            "name": "user",
+            "required": true
+        }
+    ],
+    "users.destroy": [
+        {
+            "name": "user",
+            "required": true
         }
     ],
     "storage.local": [

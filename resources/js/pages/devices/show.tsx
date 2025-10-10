@@ -7,7 +7,7 @@ interface ShowDeviceProps {
     device: Device;
 }
 
-export default function Show({ device }: ShowDeviceProps) {
+export default function ShowDevice ({ device }: ShowDeviceProps) {
     return (
         <AppLayout>
             <Head title="Inspect Device" />
